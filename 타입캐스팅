@@ -1,0 +1,50 @@
+using System;
+
+namespace BoxingUnboxing
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int a = 123;
+            object b = (object)a; // a에 담긴 값을 박싱해서 힙에 저장
+            int c = (int)b; // b에 담긴 값을 언박싱해서 스택에 저장
+
+            Console.WriteLine(a);
+            Console.WriteLine(b);
+            Console.WriteLine(c);
+            //언박싱을 할 때 정확한 원래 타입으로만 가능하다. 안그럼 컴파일러가 오류냄
+            //이것도 일종의 타입 캐스팅임.
+            //타입 캐스팅이 뭔가요? 형 변환입니다. 
+            sbyte d = 127;
+            Console.WriteLine(d);
+            int e = (int)d;
+            Console.WriteLine(e); //더 작은 범위의 데이터형에서 더 큰 데이터 형으로 바꿀 때는 문제가 없다.
+
+            int x = 128; //sbyte의 최대값보다 1 큰 수
+            sbyte y = (sbyte)x; Console.WriteLine(y); //오버플로우 발생 
+            //float 이나 double에서는 오버플로우가 일어나지는 않지만 정밀성에 손상을 입는다.
+
+            FloatConversion();
+        }
+
+        static void FloatConversion()
+        {
+            float a = 69.6875f;
+            Console.WriteLine("a : {0}", a);
+
+            double b = (double)a;
+            Console.WriteLine("b : {0}", b);
+            Console.WriteLine("69.6875 == b : {0}", 69.6875 == b);
+
+            float x = 0.1f;
+            Console.WriteLine("x : {0}", x);
+
+            double y = (double)x; Console.WriteLine("y : {0}", y); 
+
+            Console.WriteLine("0.1 == y : {0}", 0.1 == y); //false가 나온다. 형 변환 되면서 정확성을 잃었다.
+            //참고로 부호가 없는 정수 형식과 있는 거의 사이의 변환에서 음수를 부호가 없는 형으로 변환하면 언더플로가 일어난다,
+            //그리고 부동 소수점 형식과 정수 형식 사이의 변환에서 소수점 아래 모든 버리고 소수점 위의 값만 남긴다 반올림같은 자비는 없다.
+        }
+    }
+}
