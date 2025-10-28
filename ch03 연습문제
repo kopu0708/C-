@@ -1,0 +1,21 @@
+using System;
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("사각형의 너비를 입력하세요:");
+            string input = Console.ReadLine();
+
+            Console.WriteLine("사각형의 높이를 입력하세요:");
+            string input2 = Console.ReadLine();
+
+            int a = int.Parse(input);
+            int b = int.Parse(input2);
+
+            int result = a * b; 
+            Console.WriteLine($"사각형의 넓이는:{result}");
+        }
+    }
+}
