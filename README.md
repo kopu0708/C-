@@ -221,3 +221,44 @@ List<string> items2 = new List<string> { "Apple", "Banana" };
 string firstItem2 = items2?[0];
 Console.WriteLine(firstItem2); // "Apple"이 출력됩니다.
 ~~~
+?? 이렇게 생긴 null 병합 연산자도 있는데 null검사를 간결하게 만들어주는 역할을 한다. 두 개의 피연산자를 받아들여 왼쪽 피연산자가 null인지 평가한다.
+
+null이면 오른쪽 피연산자를 반환하고 아니면 왼쪽 피연산자를 그대로 반환한다. null 조건부 연산자와 함께 많이 사용한다.
+
+~~~
+User user = null;
+
+// 1. user가 null -> user?.Name은 null이 됨
+// 2. ?? (Null 병합) 연산자가 왼쪽이 null임을 확인
+// 3. "Guest"를 'username' 변수에 할당
+string username = user?.Name ?? "Guest";
+
+Console.WriteLine(username); // "Guest"가 출력됩니다.
+
+// 중첩 예제
+User user2 = new User(); // UserAddress가 null
+string street = user2?.UserAddress?.Street ?? "No Address";
+
+Console.WriteLine(street); // "No Address"가 출력됩니다.
+~~~
+### 비트 연산자, 비트 논리 연산자 ###
+비트 수준에서 데이터를 가공해야 하는 경우가 종종 생긴다. 이걸 위한 연산자 임
+
+<< 왼쪽 시프트 연산자 첫 번째 피연사자의 비트를 두 번째 피연산자의 수만큼 왼쪽으로 이동 
+
+>> 오른쪽 시프트 위와 동일함 오른쪽으로 이동시키는거
+
+& 논리곱 수행  정수 계열 형식과 bool 형식에 대해 사용
+
+| 논리합 수행 정수 계열 형식과 bool 형식에 대해 사용
+
+^ 배타적 논리합 수행 (xor) 정수 계열 형식과 bool 형식에 대해 사용
+
+~ 보수(not) 연산 수행 비트 반전 한다는 말임 
+
+#### 연산자 우선순위 ####
+이제 모든 연산자를 알아봤다 참고로 a = a + b 이런 식은 a += b 이렇게 줄여 쓸 수 있음 다른 것도 가능 해보셈
+
+아무튼 연산자들도 일반적인 사칙연산 처럼 우선순위가 있다.
+
+<img width="653" height="1010" alt="image" src="https://github.com/user-attachments/assets/4e767084-8ab2-483f-8f17-840aff73f0d2" />
