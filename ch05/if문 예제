@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace ConsoleApp1
 {
@@ -10,18 +10,24 @@ namespace ConsoleApp1
 
             string input = Console.ReadLine();
             int number = int.Parse(input);
-
-            if(number % 2 == 0)
+            if (number >= 0)
             {
-                Console.WriteLine($"{number}는 짝수입니다.");
-            }
-            else if(number == 0)
-            {
-                Console.WriteLine("0은 짝수도 홀수도 아닙니다.");
+                if (number % 2 == 0)
+                {
+                    Console.WriteLine($"{number}는 짝수입니다.");
+                }
+                else if (number == 0)
+                {
+                    Console.WriteLine("0은 짝수도 홀수도 아닙니다.");
+                }
+                else
+                {
+                    Console.WriteLine($"{number}는 홀수입니다.");
+                }
             }
             else
             {
-                Console.WriteLine($"{number}는 홀수입니다.");
+                Console.WriteLine("음수는 처리할 수 없습니다.");
             }
         }
     }
