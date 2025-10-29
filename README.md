@@ -149,3 +149,26 @@ string result = a == 30 ? "삼십" : "삼십아님"; // result는 "삼십"
 ?. 가 하는 일은 객체의 멤버에 접근하기 전에 해당 객체가 null인지 검사하여 결과가 참이면 null을 반환하고 그렇지 않으면 .뒤에 지정된 멤버를 반환한다.
 
 ?[] 도 동일한 기능을 수행한다. 객체의 멤버 접근이 아닌 배열과 같은 컬렉션 객체의 첨자를 이용한 참조에 사용된다는 점이 다르다. 
+
+~~~
+public class User
+{
+    public string Name { get; set; }
+}
+
+// ...
+
+User user = null;
+string name;
+User user = null;
+
+// user가 null이므로 user.Name에 접근하지 않고, 'name' 변수에 즉시 null을 할당합니다.
+string name = user?.Name; 
+
+Console.WriteLine(name); // null이 출력됩니다. (예외 발생 안 함)
+
+// 만약 user가 null이 아니라면
+User user2 = new User { Name = "Alice" };
+string name2 = user2?.Name;
+Console.WriteLine(name2); // "Alice"가 출력됩니다.
+~~~
