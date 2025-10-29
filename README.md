@@ -160,7 +160,6 @@ public class User
 
 User user = null;
 string name;
-User user = null;
 
 // user가 null이므로 user.Name에 접근하지 않고, 'name' 변수에 즉시 null을 할당합니다.
 string name = user?.Name; 
@@ -171,4 +170,54 @@ Console.WriteLine(name); // null이 출력됩니다. (예외 발생 안 함)
 User user2 = new User { Name = "Alice" };
 string name2 = user2?.Name;
 Console.WriteLine(name2); // "Alice"가 출력됩니다.
+~~~
+이런 식으로 사용가능하다. ?. 는 if문을 쓸 곳에 사용해 코드 양을 줄일 수 있어 편리하다.
+
+특히 그 진가는 객체가 중첩되어 있을 때 나타난다
+~~~
+public class Address
+{
+    public string Street { get; set; }
+}
+
+public class User
+{
+    public Address UserAddress { get; set; }
+}
+
+// ...
+
+User user = new User(); // User 객체는 있지만, UserAddress 속성은 null입니다.
+
+// 1. 기존 방식: 중첩된 if문 필요
+string street;
+if (user != null)
+{
+    if (user.UserAddress != null)
+    {
+        street = user.UserAddress.Street;
+    }
+}
+// 'street'은 null입니다.
+
+// 2. Null 조건부 연산자 사용
+// user?.UserAddress 에서 UserAddress가 null이므로, 
+// 그 뒤의 .Street에 접근하지 않고 즉시 null을 반환합니다.
+string street2 = user?.UserAddress?.Street;
+
+Console.WriteLine(street2); // null이 출력됩니다.
+~~~
+?[]는 배열이나 리스트가 null일때 유용하다
+~~~
+List<string> items = null;
+
+// items가 null이므로 [0] 인덱스에 접근하지 않고 'firstItem'에 null을 할당합니다.
+string firstItem = items?[0];
+
+Console.WriteLine(firstItem); // null이 출력됩니다.
+
+// ---
+List<string> items2 = new List<string> { "Apple", "Banana" };
+string firstItem2 = items2?[0];
+Console.WriteLine(firstItem2); // "Apple"이 출력됩니다.
 ~~~
