@@ -260,5 +260,4 @@ Console.WriteLine(street); // "No Address"가 출력됩니다.
 이제 모든 연산자를 알아봤다 참고로 a = a + b 이런 식은 a += b 이렇게 줄여 쓸 수 있음 다른 것도 가능 해보셈
 
 아무튼 연산자들도 일반적인 사칙연산 처럼 우선순위가 있다.
-
-<img width="653" height="1010" alt="image" src="https://github.com/user-attachments/assets/4e767084-8ab2-483f-8f17-840aff73f0d2" />
+<img width="653" height="1010" alt="image" src="https://github.com/user-attachments/assets/bc658efa-4068-4a28-85fc-4d038d5ffa9f" />
