@@ -1,0 +1,47 @@
+using System;
+
+namespace RefReturn
+{
+    class Product //ref 반환 예제 클래스
+    {
+        private int price = 100;
+       
+        public ref int GetPrice() // ref로 반환
+        {
+            return ref price;
+        }
+        public void PrintPrice()
+        {
+            Console.WriteLine($"Price: {price}"); 
+        }
+    }
+
+    class Divide // out 매개변수 예제 클래스
+    {
+        public static void DivideNumbers(int a, int b, out int quotient, out int remainder)
+        {
+            quotient = a / b;
+            remainder = a % b;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Product product = new Product(); // Product 인스턴스 생성
+            product.PrintPrice(); // 초기 가격 출력
+            ref int priceRef = ref product.GetPrice(); // ref로 가격 참조 얻기
+            priceRef += 50; // 가격 수정
+            product.PrintPrice(); // 수정된 가격 출력
+
+            int a = 20;
+            int b = 3;
+            int c;
+            int d;
+
+            Divide.DivideNumbers(a, b, out c, out d); // out 매개변수 사용
+            Console.WriteLine($"Quotient: {c}, Remainder: {d}"); // 결과 출력 
+        }
+    }
+}
