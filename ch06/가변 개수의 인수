@@ -1,0 +1,25 @@
+using System;
+class Program
+{
+    static int Sum(params int[] numbers)
+    {
+        int total = 0;
+        foreach (int number in numbers)
+        {
+            total += number;
+        }
+        return total;
+    }
+
+    static void Main(string[] args)
+    {
+        int result = Sum(1, 2, 3, 4, 5);
+        Console.WriteLine("The sum is: " + result); //인수 개수가 가변적이에요
+        int result2 = Sum(1, 2);
+        Console.WriteLine("The sum is: " + result2);  
+        int result3 = Sum();  //인수를 하나도 전달하지 않을 수도 있어요
+        Console.WriteLine("The sum is: " + result3);
+        //int result4 = Sum(1.1, 2.2, 3); //그런데 자료형은 고정적이에요
+       // Console.WriteLine("The sum is: " + result4);//컴파일 오류 발생
+    }
+}
