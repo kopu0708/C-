@@ -1,0 +1,31 @@
+using System;
+class Program
+{
+    static int Plus(int a, int b)
+    {
+        return a + b;
+    }
+
+    static int Plus(int a, int b, int c)
+    {
+        return a + b + c;
+    }
+
+    static double Plus(double a, double b)
+    {
+        return (double)(a + b);
+    }
+
+    static double Plus(double a, int b)
+    {
+        return a + b;
+    }
+
+    static void Main(string[] args)
+    {
+        Console.WriteLine(Plus(1, 2));          // Calls Plus(int, int)
+        Console.WriteLine(Plus(1, 2, 3));       // Calls Plus(int, int, int)
+        Console.WriteLine(Plus(1.5, 2.5));      // Calls Plus(double, double)
+        Console.WriteLine(Plus(1.5, 2));        // Calls Plus(double, int)
+    }
+}
