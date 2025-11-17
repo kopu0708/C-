@@ -1,0 +1,25 @@
+using System;
+
+namespace OptionalParameter
+{
+    class MainApp
+    {
+        static void PrintProfile(string name, string phone = "")
+        {
+            Console.WriteLine($"Name: {name}, Phone: {phone}");
+        }
+
+
+        static void Main()
+        {
+            PrintProfile("Alice");
+            PrintProfile("Bob", "123-456-7890");
+            PrintProfile(name: "Charlie");  
+            PrintProfile(name: "Diana", phone: "098-765-4321");
+        }
+    }
+}
+//메소드의  매개변수는 기본값을 가질 수 있다. 그래서 기본값을 가진 매개변수는 호출할 때 해당 인수 생략 가능
+// 선택적 인수는 항상 필수 인수 뒤에 와야한다. 근데 이게 작성하고 한참 지나면 내가 어느 매개변수에 어떤 인수를 줬는지가 분간이 안 될 때도 있다.
+// 이런 경우 명명된 인수의 도움을 받자 
+// 메소드 오버로딩이랑 함께 사용하면 혼란을 야기한다. 그러니 하지 마셈 
